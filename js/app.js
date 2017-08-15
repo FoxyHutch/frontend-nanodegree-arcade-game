@@ -47,6 +47,13 @@ var Player = function() {
 }
 
 Player.prototype.update = function() {
+  if(this.y < 50){
+    if (confirm("Möchtest du das Spiel neu starten?") == true) {
+    Engine.init();
+    }else {
+    ;
+}
+  }
 
 };
 
