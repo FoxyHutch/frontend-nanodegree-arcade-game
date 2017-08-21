@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(y, speed) {
+var Enemy = function(x, y, speed) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
 
@@ -8,7 +8,7 @@ var Enemy = function(y, speed) {
   this.sprite = 'images/enemy-bug.png';
 
   // TODO: Variablen in Methode übergeben
-  this.x = 0;
+  this.x = x;
   this.y = y;
   this.speed = speed;
 };
@@ -47,14 +47,6 @@ var Player = function() {
 }
 
 Player.prototype.update = function() {
-  if(this.y < 50){
-    if (confirm("Möchtest du das Spiel neu starten?") == true) {
-    Engine.init();
-    }else {
-    ;
-}
-  }
-
 };
 
 Player.prototype.render = function() {
@@ -64,16 +56,24 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(direction) {
   switch (direction) {
     case 'up':
+    if (this.y >= 60 ) {
       this.y -= 80;
+    }
       break;
     case 'down':
+    if (this.y <= 320) {
       this.y += 80;
+    }
       break;
     case 'left':
+    if (this.x >= 100) {
       this.x -= 100;
+    }
       break;
     case 'right':
+    if (this.x <= 399) {
       this.x += 100;
+    }
       break;
   }
 };
@@ -87,9 +87,9 @@ row 1: y = 50
 row 2: y = 100
 row 3: y = 150
 */
-var enemyOne = new Enemy(60, 200);
-var enemyTwo = new Enemy(140, 100);
-var enemyThree = new Enemy(220, 50);
+var enemyOne = new Enemy(0, 60, 200);
+var enemyTwo = new Enemy(0, 140, 100);
+var enemyThree = new Enemy(0, 220, 50);
 var allEnemies = [enemyOne, enemyTwo, enemyThree];
 
 
